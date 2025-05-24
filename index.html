@@ -13,23 +13,23 @@
             background-color: #f8fafc; /* Light background */
         }
         .gradient-bg {
-            background: linear-gradient(to right, #4a00e0, #8e2de2); /* Deep purple to lighter purple */
+            background: linear-gradient(to right, #0a008e, #6a1bb2); /* Darker blue to purple */
         }
         .btn-primary {
-            background-color: #4a00e0; /* Deep purple */
+            background-color: #0a008e; /* Main button color from logo blue */
             transition: background-color 0.3s ease;
         }
         .btn-primary:hover {
-            background-color: #6a1bb2; /* Slightly darker purple on hover */
+            background-color: #1a109e; /* Slightly lighter/more vibrant blue on hover */
         }
         .form-input {
             border-color: #d1d5db; /* Light gray border */
         }
         .form-input:focus {
-            border-color: #8e2de2; /* Purple focus border */
-            box-shadow: 0 0 0 3px rgba(142, 45, 226, 0.2); /* Purple glow on focus */
+            border-color: #0a008e; /* Blue focus border */
+            box-shadow: 0 0 0 3px rgba(10, 0, 142, 0.2); /* Blue glow on focus */
         }
-        /* Custom style for testimonial grid to make 5 items look balanced */
+        /* Custom style for testimonial grid to make 6 items look balanced */
         #testimonials .grid {
             grid-template-columns: repeat(1, minmax(0, 1fr)); /* Default to 1 column on small screens */
         }
@@ -38,11 +38,101 @@
                 grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns */
             }
         }
-        @media (min-width: 1024px) { /* Large screens and up (optional, could revert to 3 if desired, but 2 is more balanced for 5) */
+        @media (min-width: 1024px) { /* Large screens and up */
              #testimonials .grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr)); /* Still 2 columns for 5 items */
+                grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 columns for 6 items */
             }
         }
+        /* Added for a more spacious, clean feel in hero section text */
+        .hero-headline-line {
+            display: block;
+            margin-bottom: 0.5rem; /* Adjust spacing between lines */
+        }
+        .hero-headline-line:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Styling for Problem/Solution Section with background image and overlay */
+        .problem-solution-section {
+            background-image: url('Building AI-Powered Chatbots.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative; /* Needed for pseudo-element positioning */
+            color: #ffffff; /* Ensure text is white for readability */
+        }
+        .problem-solution-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.65); /* Darker overlay for better readability */
+            z-index: 1; /* Place overlay above background image */
+        }
+        .problem-solution-section > .container {
+            position: relative;
+            z-index: 2; /* Place content above the overlay */
+        }
+        .problem-solution-section h2,
+        .problem-solution-section p,
+        .problem-solution-section ul li {
+            color: #ffffff; /* Ensure all text elements are white */
+        }
+        .problem-solution-section ul li span { /* Specific for the span inside list items */
+             color: #ffffff;
+        }
+
+
+        /* Styling for Features Section with background image and overlay */
+        .features-section {
+            background-image: url('rerererer.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative; /* Needed for pseudo-element positioning */
+            color: #ffffff; /* Ensure text is white for readability */
+        }
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.65); /* Darker overlay for better readability */
+            z-index: 1; /* Place overlay above background image */
+        }
+        .features-section > .container {
+            position: relative;
+            z-index: 2; /* Place content above the overlay */
+        }
+        .features-section h2,
+        .features-section p,
+        .features-section .bg-gray-50 { /* Targeting card backgrounds */
+             color: #ffffff; /* Set text in cards to white */
+             background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white for cards */
+             border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border for cards */
+        }
+        .features-section .bg-gray-50 h3,
+        .features-section .bg-gray-50 p {
+             color: #ffffff; /* Ensure text inside cards is white */
+        }
+        .features-section .bg-gray-50 i {
+             color: #a78bfa; /* Keep icons visible and branded (light purple/blue) */
+        }
+
+        /* Subtle background for Benefits and Testimonials sections (original styling) */
+        .benefits-section-bg-pattern,
+        .testimonials-section-bg-pattern {
+            background-image: radial-gradient(circle at 1% 1%, rgba(10,0,142,0.02) 0%, transparent 20%),
+                              radial-gradient(circle at 99% 99%, rgba(10,0,142,0.02) 0%, transparent 20%);
+            background-repeat: no-repeat;
+            background-size: 50% 50%;
+            background-position: top left, bottom right;
+        }
+
     </style>
 </head>
 <body class="text-gray-800">
@@ -64,45 +154,47 @@
         </div>
     </header>
 
-    <section class="gradient-bg text-white py-16 md:py-24 text-center">
-        <div class="container mx-auto px-6 md:px-12">
+    <section class="gradient-bg text-white py-16 md:py-24 text-center relative overflow-hidden">
+        <div class="container mx-auto px-6 md:px-12 relative z-10">
             <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 rounded-lg">
-                RECTECH AI: Automate. Engage. Empower Your Business with Cutting-Edge AI Chatbots.
+                <span class="hero-headline-line">RECTECH AI</span>
+                <span class="hero-headline-line">Automate. Engage. Empower.</span>
+                <span class="hero-headline-line">Your Business with Cutting-Edge AI Chatbots.</span>
             </h1>
-            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto rounded-lg">
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto rounded-lg font-light opacity-90">
                 Revolutionize customer interactions, generate leads, and streamline operations with intelligent AI solutions, powered by the trusted BotPenguin platform.
             </p>
             <a href="https://rectechai.com/" target="_blank" class="btn-primary text-white text-xl font-semibold px-8 py-4 rounded-full shadow-xl hover:scale-105 transform transition duration-300 ease-in-out">
                 Get Started FREE
             </a>
         </div>
+        <div class="absolute inset-0 bg-gradient-to-br from-transparent to-blue-900 opacity-10"></div>
+        <div class="absolute bottom-0 right-0 w-1/3 h-1/3 md:w-1/4 md:h-1/4 lg:w-1/5 lg:h-1/5 opacity-20" style="background: url('https://placehold.co/400x400/0a008e/ffffff/webp?text=AI+Concept+Image') no-repeat center center; background-size: contain;"></div>
     </section>
 
-    <section class="py-16 md:py-24 bg-white">
+    <section class="py-16 md:py-24 problem-solution-section">
         <div class="container mx-auto px-6 md:px-12 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-900 rounded-lg">Are You Ready to Transform Your Business?</h2>
-            <p class="text-lg md:text-xl leading-relaxed max-w-4xl mx-auto text-gray-700 rounded-lg">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 rounded-lg">Are You Ready to Transform Your Business?</h2>
+            <p class="text-lg md:text-xl leading-relaxed max-w-4xl mx-auto rounded-lg">
                 In today's fast-paced digital world, efficient customer engagement and lead generation are crucial. Many businesses struggle with:
             </p>
-            <ul class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto text-gray-700">
-                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm">
-                    <i class="fas fa-times-circle text-red-500 mr-3 mt-1"></i>
-                    <span>Missing out on leads due to slow response times.</span>
+            <ul class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
+                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm bg-opacity-20"> <i class="fas fa-times-circle text-red-300 mr-3 mt-1"></i> <span>Missing out on leads due to slow response times.</span>
                 </li>
-                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm">
-                    <i class="fas fa-times-circle text-red-500 mr-3 mt-1"></i>
+                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm bg-opacity-20">
+                    <i class="fas fa-times-circle text-red-300 mr-3 mt-1"></i>
                     <span>Overwhelmed customer support teams.</span>
                 </li>
-                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm">
-                    <i class="fas fa-times-circle text-red-500 mr-3 mt-1"></i>
+                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm bg-opacity-20">
+                    <i class="fas fa-times-circle text-red-300 mr-3 mt-1"></i>
                     <span>Inefficient marketing and sales processes.</span>
                 </li>
-                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm">
-                    <i class="fas fa-times-circle text-red-500 mr-3 mt-1"></i>
+                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm bg-opacity-20">
+                    <i class="fas fa-times-circle text-red-300 mr-3 mt-1"></i>
                     <span>Difficulty managing customer interactions across multiple channels.</span>
                 </li>
             </ul>
-            <p class="text-lg md:text-xl leading-relaxed mt-8 max-w-4xl mx-auto text-gray-700 rounded-lg">
+            <p class="text-lg md:text-xl leading-relaxed mt-8 max-w-4xl mx-auto rounded-lg">
                 RECTECH AI offers the powerful, customizable AI chatbot solutions you need to overcome these challenges and thrive, built on the robust BotPenguin foundation.
             </p>
         </div>
@@ -114,39 +206,39 @@
         </a>
     </section>
 
-    <section id="benefits" class="py-16 md:py-24 bg-gray-50">
-        <div class="container mx-auto px-6 md:px-12 text-center">
+    <section id="benefits" class="py-16 md:py-24 bg-gray-50 benefits-section-bg-pattern relative overflow-hidden">
+        <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 rounded-lg">Unlock Your Business Potential with RECTECH AI</h2>
             <p class="text-lg md:text-xl mb-12 text-gray-700 rounded-lg">Experience the power of automation and intelligent engagement.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-                    <i class="fas fa-chart-line text-purple-600 text-4xl mb-4"></i>
+                    <i class="fas fa-chart-line text-blue-800 text-4xl mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2 text-gray-900">Generate More Leads Effortlessly</h3>
                     <p class="text-gray-600">Capture and nurture leads 24/7 without extra effort or expenses.</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-                    <i class="fas fa-headset text-purple-600 text-4xl mb-4"></i>
+                    <i class="fas fa-headset text-blue-800 text-4xl mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2 text-gray-900">24/7 Customer Support</h3>
                     <p class="text-gray-600">Provide instant, automated support, ensuring your customers are always assisted.</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-                    <i class="fas fa-dollar-sign text-purple-600 text-4xl mb-4"></i>
+                    <i class="fas fa-dollar-sign text-blue-800 text-4xl mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2 text-gray-900">Boost Sales & Conversions</h3>
                     <p class="text-gray-600">Engage a wider audience with instant communication, guiding them through the sales funnel.</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-                    <i class="fas fa-bullhorn text-purple-600 text-4xl mb-4"></i>
+                    <i class="fas fa-bullhorn text-blue-800 text-4xl mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2 text-gray-900">Automate Marketing Campaigns</h3>
                     <p class="text-gray-600">Transform your marketing efforts with AI-driven automation, from promotions to personalized offers.</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-                    <i class="fas fa-comments text-purple-600 text-4xl mb-4"></i>
+                    <i class="fas fa-comments text-blue-800 text-4xl mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2 text-gray-900">Seamless Multi-Platform Engagement</h3>
                     <p class="text-gray-600">Connect with customers across WhatsApp, Facebook, Instagram, Website, and more.</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-                    <i class="fas fa-tachometer-alt text-purple-600 text-4xl mb-4"></i>
+                    <i class="fas fa-tachometer-alt text-blue-800 text-4xl mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2 text-gray-900">Data-Driven Growth</h3>
                     <p class="text-gray-600">Speedtrack your progress with top-of-the-line analytics tools for continuous optimization.</p>
                 </div>
@@ -160,46 +252,40 @@
         </a>
     </section>
 
-    <section id="features" class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-6 md:px-12 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 rounded-lg">What RECTECH AI Delivers</h2>
-            <p class="text-lg md:text-xl mb-12 text-gray-700 rounded-lg">Comprehensive AI solutions built for your success.</p>
+    <section id="features" class="py-16 md:py-24 features-section">
+        <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 rounded-lg">What RECTECH AI Delivers</h2>
+            <p class="text-lg md:text-xl mb-12 rounded-lg">Comprehensive AI solutions built for your success.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md">
-                    <i class="fas fa-plug text-purple-600 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">80+ Integrations</h3>
-                    <p class="text-gray-600">Seamlessly connect with your existing CRMs, appointment schedulers, analytics tools, and more.</p>
+                <div class="p-8 rounded-xl shadow-md">
+                    <i class="fas fa-plug text-blue-300 text-4xl mb-4"></i> <h3 class="text-xl font-semibold mb-2">80+ Integrations</h3>
+                    <p>Seamlessly connect with your existing CRMs, appointment schedulers, analytics tools, and more.</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md">
-                    <i class="fas fa-comment-dots text-purple-600 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Live Chat Capabilities</h3>
-                    <p class="text-gray-600">Transition from automated conversations to human support whenever needed, ensuring a personal touch.</p>
+                <div class="p-8 rounded-xl shadow-md">
+                    <i class="fas fa-comment-dots text-blue-300 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Live Chat Capabilities</h3>
+                    <p>Transition from automated conversations to human support whenever needed, ensuring a personal touch.</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md">
-                    <i class="fas fa-inbox text-purple-600 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Unified Inbox</h3>
-                    <p class="text-gray-600">Manage all customer interactions from a single, intuitive dashboard, regardless of the platform.</p>
+                <div class="p-8 rounded-xl shadow-md">
+                    <i class="fas fa-inbox text-blue-300 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Unified Inbox</h3>
+                    <p>Manage all customer interactions from a single, intuitive dashboard, regardless of the platform.</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md">
-                    <i class="fas fa-chart-bar text-purple-600 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Robust Analytics</h3>
-                    <p class="text-gray-600">Gain deep insights into customer behavior and chatbot performance to continuously optimize your strategy.</p>
+                <div class="p-8 rounded-xl shadow-md">
+                    <i class="fas fa-chart-bar text-blue-300 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Robust Analytics</h3>
+                    <p>Gain deep insights into customer behavior and chatbot performance to continuously optimize your strategy.</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md">
-                    <i class="fas fa-mobile-alt text-purple-600 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Mobile App Access</h3>
-                    <p class="text-gray-600">Create, monitor, and manage your AI chatbots on the go with our dedicated mobile application.</p>
+                <div class="p-8 rounded-xl shadow-md">
+                    <i class="fas fa-mobile-alt text-blue-300 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Mobile App Access</h3>
+                    <p>Create, monitor, and manage your AI chatbots on the go with our dedicated mobile application.</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md">
-                    <i class="fas fa-robot text-purple-600 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Specialized AI Chatbots</h3>
-                    <p class="text-gray-600">Tailored solutions for Instagram, WhatsApp, Facebook, Telegram, Websites, WordPress, Shopify, WooCommerce, Squarespace, and Microsoft Teams.</p>
-                </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md col-span-1 md:col-span-2 lg:col-span-1 mx-auto">
-                    <i class="fas fa-user-tie text-purple-600 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">AI Sales & Marketing Agents</h3>
-                    <p class="text-gray-600">Automate customer interactions for sales and generate positive marketing ROI with dedicated AI agents.</p>
+                <div class="p-8 rounded-xl shadow-md">
+                    <i class="fas fa-robot text-blue-300 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Specialized AI Chatbots</h3>
+                    <p>Tailored solutions for Instagram, WhatsApp, Facebook, Telegram, Websites, WordPress, Shopify, WooCommerce, Squarespace, and Microsoft Teams.</p>
                 </div>
             </div>
         </div>
@@ -217,16 +303,16 @@
             <p class="text-lg md:text-xl leading-relaxed max-w-4xl mx-auto text-gray-700 rounded-lg">
                 RECTECH AI solutions are designed to elevate businesses in diverse sectors, including:
             </p>
-            <div class="mt-8 flex flex-wrap justify-center gap-4 text-lg font-medium text-purple-700">
-                <span class="bg-purple-100 px-4 py-2 rounded-full shadow-sm">Healthcare</span>
-                <span class="bg-purple-100 px-4 py-2 rounded-full shadow-sm">Education</span>
-                <span class="bg-purple-100 px-4 py-2 rounded-full shadow-sm">E-commerce</span>
-                <span class="bg-purple-100 px-4 py-2 rounded-full shadow-sm">Real Estate</span>
-                <span class="bg-purple-100 px-4 py-2 rounded-full shadow-sm">Consultants</span>
-                <span class="bg-purple-100 px-4 py-2 rounded-full shadow-sm">SaaS</span>
-                <span class="bg-purple-100 px-4 py-2 rounded-full shadow-sm">Tours & Travel</span>
-                <span class="bg-purple-100 px-4 py-2 rounded-full shadow-sm">Insurance</span>
-                <span class="bg-purple-100 px-4 py-2 rounded-full shadow-sm">...and many more!</span>
+            <div class="mt-8 flex flex-wrap justify-center gap-4 text-lg font-medium text-blue-800">
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Healthcare</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Education</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">E-commerce</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Real Estate</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Consultants</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">SaaS</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Tours & Travel</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Insurance</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">...and many more!</span>
             </div>
         </div>
     </section>
@@ -237,41 +323,47 @@
         </a>
     </section>
 
-    <section id="testimonials" class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-6 md:px-12 text-center">
+    <section id="testimonials" class="py-16 md:py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 rounded-lg">What Our Partners Are Saying</h2>
             <p class="text-lg md:text-xl mb-12 text-gray-700 rounded-lg">Hear directly from businesses transforming with our AI solutions.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
                     <p class="text-gray-700 italic mb-4">
                         "Their ability to execute in a timely manner. If you want to start an AI Chatbot business then this is the place. - They have a great work environment, and know how important it is to be efficient."
                     </p>
-                    <p class="font-semibold text-purple-700">- Gustav Louv</p>
+                    <p class="font-semibold text-blue-700">- Gustav Louv</p>
                 </div>
                 <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
                     <p class="text-gray-700 italic mb-4">
                         "We are using BotPenguin for our Facebook bots, responding to Facebook messages automatically. Currently handling millions of messages on a monthly basis and really great product."
                     </p>
-                    <p class="font-semibold text-purple-700">- Twana D.</p>
+                    <p class="font-semibold text-blue-700">- Twana D.</p>
                 </div>
                 <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
                     <p class="text-gray-700 italic mb-4">
                         "Its Whatsapp Automation with API is really practical for sales & marketing objective. If it comes with analytics about campaign result it will be awesome."
                     </p>
-                    <p class="font-semibold text-purple-700">- BD Michae</p>
+                    <p class="font-semibold text-blue-700">- BD Michae</p>
                 </div>
                 <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
                     <p class="text-gray-700 italic mb-4">
                         "Their timely communication is the reason for the great project management. Our descriptions are precisely translated into needs by BotPenguin, and they possess the necessary skill set to execute features in a timely manner."
                     </p>
-                    <p class="font-semibold text-purple-700">- Yashi Amola</p>
+                    <p class="font-semibold text-blue-700">- Yashi Amola</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-lg mx-auto md:col-span-2 lg:col-span-1">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
                     <p class="text-gray-700 italic mb-4">
                         "The team at BotPenguin contributed knowledge not just about using Generative AI but also about how these technologies may be customized to meet our needs... It was amazing how well they could convert difficult technical ideas into workable, approachable solutions."
                     </p>
-                    <p class="font-semibold text-purple-700">- Phil Johnson</p>
+                    <p class="font-semibold text-blue-700">- Phil Johnson</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <p class="text-gray-700 italic mb-4">
+                        "RECTECH AI has revolutionized our customer engagement. The ease of setup and the powerful automation features have significantly boosted our lead conversion rates. Highly recommend for any business looking to scale!"
+                    </p>
+                    <p class="font-semibold text-blue-700">- Sarah Chen, Marketing Director</p>
                 </div>
             </div>
         </div>
@@ -323,7 +415,7 @@
             <p class="text-lg mb-2">Automate. Engage. Empower.</p>
             <p class="text-sm text-gray-400">&copy; 2025 RECTECH AI. All rights reserved.</p>
             <p class="text-sm text-gray-400 mt-2">
-                Visit our main site: <a href="https://rectechai.com/" target="_blank" class="text-purple-400 hover:underline">rectechai.com</a>
+                Visit our main site: <a href="https://rectechai.com/" target="_blank" class="text-blue-400 hover:underline">rectechai.com</a>
             </p>
         </div>
     </footer>
