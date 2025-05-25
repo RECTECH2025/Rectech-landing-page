@@ -1,499 +1,498 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RECTECH AI - Automate. Engage. Empower.</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Light background */
-        }
-        .gradient-bg {
-            background: linear-gradient(to right, #0a008e, #6a1bb2); /* Darker blue to purple */
-        }
-        .btn-primary {
-            background-color: #0a008e; /* Main button color from logo blue */
-            transition: background-color 0.3s ease;
-        }
-        .btn-primary:hover {
-            background-color: #1a109e; /* Slightly lighter/more vibrant blue on hover */
-        }
-        .form-input {
-            border-color: #d1d5db; /* Light gray border */
-        }
-        .form-input:focus {
-            border-color: #0a008e; /* Blue focus border */
-            box-shadow: 0 0 0 3px rgba(10, 0, 142, 0.2); /* Blue glow on focus */
-        }
-        /* Custom style for testimonial grid to make 6 items look balanced */
-        #testimonials .grid {
-            grid-template-columns: repeat(1, minmax(0, 1fr)); /* Default to 1 column on small screens */
-        }
-        @media (min-width: 768px) { /* Medium screens and up */
-            #testimonials .grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns */
-            }
-        }
-        @media (min-width: 1024px) { /* Large screens and up */
-             #testimonials .grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 columns for 6 items */
-            }
-        }
-        /* Added for a more spacious, clean feel in hero section text */
-        .hero-headline-line {
-            display: block;
-            margin-bottom: 0.5rem; /* Adjust spacing between lines */
-        }
-        .hero-headline-line:last-child {
-            margin-bottom: 0;
-        }
-
-        /* --- SECTION SPECIFIC BACKGROUNDS & OVERLAYS (Using Relative Paths) --- */
-
-        /* Hero Section - Uses gradient-bg ONLY */
-
-
-        /* Problem/Solution Section Background */
-        .problem-solution-section {
-            background-image: url('images/problem-solution-background.png'); /* Relative Path */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            color: #ffffff; /* Ensure text is white */
-        }
-        .problem-solution-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); /* Darker overlay for readability */
-            z-index: 1;
-        }
-        .problem-solution-section > .container {
-            position: relative;
-            z-index: 2;
-        }
-        .problem-solution-section h2,
-        .problem-solution-section p,
-        .problem-solution-section ul li,
-        .problem-solution-section ul li span {
-            color: #ffffff !important;
-        }
-        .problem-solution-section ul li i {
-            color: #fca5a5 !important;
-        }
-        .problem-solution-section ul li .bg-opacity-20 { /* Ensure list item cards are slightly opaque */
-            background-color: rgba(255, 255, 255, 0.15) !important;
-        }
-
-
-        /* Features Section Background */
-        .features-section {
-            background-image: url('images/features-background.png'); /* Relative Path */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            color: #ffffff; /* Ensure text is white */
-        }
-        .features-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Adjusted overlay for this image */
-            z-index: 1;
-        }
-        .features-section > .container {
-            position: relative;
-            z-index: 2;
-        }
-        .features-section h2,
-        .features-section p {
-             color: #ffffff !important;
-        }
-        .features-section .bg-gray-50 { /* Targeting card backgrounds */
-             background-color: rgba(255, 255, 255, 0.15); /* Slightly more opaque transparent white for cards */
-             border: 1px solid rgba(255, 255, 255, 0.3); /* Slightly more visible white border for cards */
-        }
-        .features-section .bg-gray-50 h3,
-        .features-section .bg-gray-50 p {
-             color: #ffffff !important;
-        }
-        .features-section .bg-gray-50 i {
-             color: #a78bfa !important; /* Keep icons visible and branded */
-        }
-
-
-        /* Testimonials Section Background */
-        .testimonials-section {
-            background-image: url('images/testimonials-background.png'); /* Relative Path */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            color: #ffffff; /* Ensure text is white */
-        }
-        .testimonials-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.75); /* Darker overlay */
-            z-index: 1;
-        }
-        .testimonials-section > .container {
-            position: relative;
-            z-index: 2;
-        }
-        .testimonials-section h2,
-        .testimonials-section p,
-        .testimonials-section .font-semibold {
-            color: #ffffff !important;
-        }
-        .testimonials-section .bg-gray-50 { /* Testimonial cards */
-            background-color: rgba(255, 255, 255, 0.15) !important;
-            border: 1px solid rgba(255, 255, 255, 0.3) !important;
-        }
-        .testimonials-section .bg-gray-50 p {
-            color: #f3f4f6 !important; /* Lighter white for quote text */
-        }
-        .testimonials-section .bg-gray-50 .font-semibold {
-            color: #a78bfa !important; /* Light purple for names */
-        }
-
-
-        /* CTA and Lead Capture Section Background */
-        .contact-section-bg {
-            background-image: url('images/contact-background.png'); /* Relative Path */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            color: #ffffff; /* Ensure text is white */
-        }
-        .contact-section-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Overlay for readability */
-            z-index: 1;
-        }
-        .contact-section-bg > .container {
-            position: relative;
-            z-index: 2;
-        }
-        .contact-section-bg h2,
-        .contact-section-bg p {
-            color: #ffffff !important;
-        }
-        /* Style for the form container inside contact section */
-        .contact-section-bg .bg-white {
-            background-color: rgba(255, 255, 255, 0.9) !important; /* Slightly opaque white form background */
-        }
-
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECTECH AI - Automate. Engage. Empower.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light background */
+        }
+        .gradient-bg {
+            background: linear-gradient(to right, #0a008e, #6a1bb2); /* Darker blue to purple */
+        }
+        .btn-primary {
+            background-color: #0a008e; /* Main button color from logo blue */
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #1a109e; /* Slightly lighter/more vibrant blue on hover */
+        }
+        .form-input {
+            border-color: #d1d5db; /* Light gray border */
+        }
+        .form-input:focus {
+            border-color: #0a008e; /* Blue focus border */
+            box-shadow: 0 0 0 3px rgba(10, 0, 142, 0.2); /* Blue glow on focus */
+        }
+        /* Custom style for testimonial grid to make 6 items look balanced */
+        #testimonials .grid {
+            grid-template-columns: repeat(1, minmax(0, 1fr)); /* Default to 1 column on small screens */
+        }
+        @media (min-width: 768px) { /* Medium screens and up */
+            #testimonials .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns */
+            }
+        }
+        @media (min-width: 1024px) { /* Large screens and up */
+             #testimonials .grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 columns for 6 items */
+            }
+        }
+        /* Added for a more spacious, clean feel in hero section text */
+        .hero-headline-line {
+            display: block;
+            margin-bottom: 0.5rem; /* Adjust spacing between lines */
+        }
+        .hero-headline-line:last-child {
+            margin-bottom: 0;
+        }
+ 
+        /* --- SECTION SPECIFIC BACKGROUNDS & OVERLAYS (All using External URLs) --- */
+ 
+        /* Hero Section - Uses gradient-bg ONLY */
+ 
+ 
+        /* Problem/Solution Section Background */
+        .problem-solution-section {
+            background-image: url('https://i.imgur.com/uBQ21Co.png'); /* REPLACE THIS WITH YOUR ACTUAL IMGUR/EXTERNAL URL for 'Building AI-Powered Chatbots.png' */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            color: #ffffff; /* Ensure text is white */
+        }
+        .problem-solution-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Darker overlay for readability */
+            z-index: 1;
+        }
+        .problem-solution-section > .container {
+            position: relative;
+            z-index: 2;
+        }
+        .problem-solution-section h2,
+        .problem-solution-section p,
+        .problem-solution-section ul li,
+        .problem-solution-section ul li span {
+            color: #ffffff !important;
+        }
+        .problem-solution-section ul li i {
+            color: #fca5a5 !important;
+        }
+        .problem-solution-section ul li .bg-opacity-20 { /* Ensure list item cards are slightly opaque */
+            background-color: rgba(255, 255, 255, 0.15) !important;
+        }
+ 
+ 
+        /* Features Section Background */
+        .features-section {
+            background-image: url('https://i.imgur.com/aFRQf3W.png'); /* REPLACE THIS WITH YOUR ACTUAL IMGUR/EXTERNAL URL for 'INTEGRATION.jpg' or .png */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            color: #ffffff; /* Ensure text is white */
+        }
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Adjusted overlay for this image */
+            z-index: 1;
+        }
+        .features-section > .container {
+            position: relative;
+            z-index: 2;
+        }
+        .features-section h2,
+        .features-section p {
+             color: #ffffff !important;
+        }
+        .features-section .bg-gray-50 { /* Targeting card backgrounds */
+             background-color: rgba(255, 255, 255, 0.15); /* Slightly more opaque transparent white for cards */
+             border: 1px solid rgba(255, 255, 255, 0.3); /* Slightly more visible white border for cards */
+        }
+        .features-section .bg-gray-50 h3,
+        .features-section .bg-gray-50 p {
+             color: #ffffff !important;
+        }
+        .features-section .bg-gray-50 i {
+             color: #a78bfa !important; /* Keep icons visible and branded */
+        }
+ 
+ 
+        /* Testimonials Section Background */
+        .testimonials-section {
+            background-image: url('https://i.imgur.com/KywGk9v.png'); /* REPLACE THIS WITH YOUR ACTUAL IMGUR/EXTERNAL URL for '67655f7e55a500be636b7c09_67655ebfbe11ca40ca11647c_ejemplo%20whatsapp%20bot%20hotelbeds.jpg' or .png */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            color: #ffffff; /* Ensure text is white */
+        }
+        .testimonials-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75); /* Darker overlay */
+            z-index: 1;
+        }
+        .testimonials-section > .container {
+            position: relative;
+            z-index: 2;
+        }
+        .testimonials-section h2,
+        .testimonials-section p,
+        .testimonials-section .font-semibold {
+            color: #ffffff !important;
+        }
+        .testimonials-section .bg-gray-50 { /* Testimonial cards */
+            background-color: rgba(255, 255, 255, 0.15) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        }
+        .testimonials-section .bg-gray-50 p {
+            color: #f3f4f6 !important; /* Lighter white for quote text */
+        }
+        .testimonials-section .bg-gray-50 .font-semibold {
+            color: #a78bfa !important; /* Light purple for names */
+        }
+ 
+ 
+        /* CTA and Lead Capture Section Background */
+        .contact-section-bg {
+            background-image: url('https://i.imgur.com/p5sm6nF.png'); /* REPLACE THIS WITH YOUR ACTUAL IMGUR/EXTERNAL URL for 'BLANK CHAT.jpg' or .png */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            color: #ffffff; /* Ensure text is white */
+        }
+        .contact-section-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Overlay for readability */
+            z-index: 1;
+        }
+        .contact-section-bg > .container {
+            position: relative;
+            z-index: 2;
+        }
+        .contact-section-bg h2,
+        .contact-section-bg p {
+            color: #ffffff !important;
+        }
+        /* Style for the form container inside contact section */
+        .contact-section-bg .bg-white {
+            background-color: rgba(255, 255, 255, 0.9) !important; /* Slightly opaque white form background */
+        }
+ 
+    </style>
 </head>
 <body>
-
-    <header class="bg-white shadow-sm py-4 px-6 md:px-12">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="images/rectech-ai-logo.png" alt="RECTECH AI Logo" class="h-10 md:h-12">
-            </div>
-            <nav class="hidden md:block">
-                <a href="#benefits" class="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-md">Benefits</a>
-                <a href="#features" class="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-md">Features</a>
-                <a href="#testimonials" class="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-md">Testimonials</a>
-                <a href="https://rectechai.com/" target="_blank" class="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-md">Main Site</a>
-            </nav>
-            <a href="https://rectechai.com/" target="_blank" class="hidden md:block bg-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-purple-700 transition duration-300">
-                Get Started FREE
-            </a>
-        </div>
-    </header>
-
-    <section class="py-16 md:py-24 text-center relative overflow-hidden gradient-bg text-white">
-        <div class="container mx-auto px-6 md:px-12 relative z-10">
-            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 rounded-lg">
-                <span class="hero-headline-line">RECTECH AI</span>
-                <span class="hero-headline-line">Automate. Engage. Empower.</span>
-                <span class="hero-headline-line">Your Business with Cutting-Edge AI Chatbots.</span>
-            </h1>
-            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto rounded-lg font-light opacity-90">
-                Revolutionize customer interactions, generate leads, and streamline operations with intelligent AI solutions, powered by the trusted BotPenguin platform.
-            </p>
-            <a href="https://rectechai.com/" target="_blank" class="btn-primary text-white text-xl font-semibold px-8 py-4 rounded-full shadow-xl hover:scale-105 transform transition duration-300 ease-in-out">
-                Get Started FREE
-            </a>
-        </div>
-    </section>
-
-    <section class="py-16 md:py-24 problem-solution-section">
-        <div class="container mx-auto px-6 md:px-12 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 rounded-lg">Are You Ready to Transform Your Business?</h2>
-            <p class="text-lg md:text-xl leading-relaxed max-w-4xl mx-auto rounded-lg">
-                In today's fast-paced digital world, efficient customer engagement and lead generation are crucial. Many businesses struggle with:
-            </p>
-            <ul class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
-                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm bg-opacity-20">
-                    <i class="fas fa-times-circle text-red-300 mr-3 mt-1"></i>
-                    <span>Missing out on leads due to slow response times.</span>
-                </li>
-                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm bg-opacity-20">
-                    <i class="fas fa-times-circle text-red-300 mr-3 mt-1"></i>
-                    <span>Overwhelmed customer support teams.</span>
-                </li>
-                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm bg-opacity-20">
-                    <i class="fas fa-times-circle text-red-300 mr-3 mt-1"></i>
-                    <span>Inefficient marketing and sales processes.</span>
-                </li>
-                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm bg-opacity-20">
-                    <i class="fas fa-times-circle text-red-300 mr-3 mt-1"></i>
-                    <span>Difficulty managing customer interactions across multiple channels.</span>
-                </li>
-            </ul>
-            <p class="text-lg md:text-xl leading-relaxed mt-8 max-w-4xl mx-auto rounded-lg">
-                RECTECH AI offers the powerful, customizable AI chatbot solutions you need to overcome these challenges and thrive, built on the robust BotPenguin foundation.
-            </p>
-        </div>
-    </section>
-
-    <section class="py-12 text-center bg-gray-50">
-        <a href="https://rectechai.com/" target="_blank" class="btn-primary text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
-            Get Started FREE
-        </a>
-    </section>
-
-    <section id="benefits" class="py-16 md:py-24 bg-gray-50 benefits-section-bg-pattern relative overflow-hidden">
-        <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 rounded-lg">Unlock Your Business Potential with RECTECH AI</h2>
-            <p class="text-lg md:text-xl mb-12 text-gray-700 rounded-lg">Experience the power of automation and intelligent engagement.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-                    <i class="fas fa-chart-line text-blue-800 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Generate More Leads Effortlessly</h3>
-                    <p class="text-gray-600">Capture and nurture leads 24/7 without extra effort or expenses.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-                    <i class="fas fa-headset text-blue-800 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">24/7 Customer Support</h3>
-                    <p class="text-gray-600">Provide instant, automated support, ensuring your customers are always assisted.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-                    <i class="fas fa-dollar-sign text-blue-800 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Boost Sales & Conversions</h3>
-                    <p class="text-gray-600">Engage a wider audience with instant communication, guiding them through the sales funnel.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-                    <i class="fas fa-bullhorn text-blue-800 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Automate Marketing Campaigns</h3>
-                    <p class="text-gray-600">Transform your marketing efforts with AI-driven automation, from promotions to personalized offers.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-                    <i class="fas fa-comments text-blue-800 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Seamless Multi-Platform Engagement</h3>
-                    <p class="text-gray-600">Connect with customers across WhatsApp, Facebook, Instagram, Website, and more.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-                    <i class="fas fa-tachometer-alt text-blue-800 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Data-Driven Growth</h3>
-                    <p class="text-gray-600">Speedtrack your progress with top-of-the-line analytics tools for continuous optimization.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-12 text-center bg-gray-50">
-        <a href="https://rectechai.com/" target="_blank" class="btn-primary text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
-            Get Started FREE
-        </a>
-    </section>
-
-    <section id="features" class="py-16 md:py-24 features-section">
-        <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 rounded-lg">What RECTECH AI Delivers</h2>
-            <p class="text-lg md:text-xl mb-12 rounded-lg">Comprehensive AI solutions built for your success.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="p-8 rounded-xl shadow-md">
-                    <i class="fas fa-plug text-blue-300 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">80+ Integrations</h3>
-                    <p>Seamlessly connect with your existing CRMs, appointment schedulers, analytics tools, and more.</p>
-                </div>
-                <div class="p-8 rounded-xl shadow-md">
-                    <i class="fas fa-comment-dots text-blue-300 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Live Chat Capabilities</h3>
-                    <p>Transition from automated conversations to human support whenever needed, ensuring a personal touch.</p>
-                </div>
-                <div class="p-8 rounded-xl shadow-md">
-                    <i class="fas fa-inbox text-blue-300 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Unified Inbox</h3>
-                    <p>Manage all customer interactions from a single, intuitive dashboard, regardless of the platform.</p>
-                </div>
-                <div class="p-8 rounded-xl shadow-md">
-                    <i class="fas fa-chart-bar text-blue-300 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Robust Analytics</h3>
-                    <p>Gain deep insights into customer behavior and chatbot performance to continuously optimize your strategy.</p>
-                </div>
-                <div class="p-8 rounded-xl shadow-md">
-                    <i class="fas fa-mobile-alt text-blue-300 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Mobile App Access</h3>
-                    <p>Create, monitor, and manage your AI chatbots on the go with our dedicated mobile application.</p>
-                </div>
-                <div class="p-8 rounded-xl shadow-md">
-                    <i class="fas fa-robot text-blue-300 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Specialized AI Chatbots</h3>
-                    <p>Tailored solutions for Instagram, WhatsApp, Facebook, Telegram, Websites, WordPress, Shopify, WooCommerce, Squarespace, and Microsoft Teams.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-12 text-center bg-white">
-        <a href="https://rectechai.com/" target="_blank" class="btn-primary text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
-            Get Started FREE
-        </a>
-    </section>
-
-    <section class="py-16 md:py-24 bg-gray-50">
-        <div class="container mx-auto px-6 md:px-12 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-900 rounded-lg">Powering Growth Across Industries</h2>
-            <p class="text-lg md:text-xl leading-relaxed max-w-4xl mx-auto text-gray-700 rounded-lg">
-                RECTECH AI solutions are designed to elevate businesses in diverse sectors, including:
-            </p>
-            <div class="mt-8 flex flex-wrap justify-center gap-4 text-lg font-medium text-blue-800">
-                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Healthcare</span>
-                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Education</span>
-                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">E-commerce</span>
-                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Real Estate</span>
-                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Consultants</span>
-                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">SaaS</span>
-                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Tours & Travel</span>
-                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Insurance</span>
-                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">...and many more!</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-12 text-center bg-gray-50">
-        <a href="https://rectechai.com/" target="_blank" class="btn-primary text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
-            Get Started FREE
-        </a>
-    </section>
-
-    <section id="testimonials" class="py-16 md:py-24 testimonials-section">
-        <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 rounded-lg">What Our Partners Are Saying</h2>
-            <p class="text-lg md:text-xl mb-12 rounded-lg">Hear directly from businesses transforming with our AI solutions.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
-                    <p class="text-gray-700 italic mb-4">
-                        "Their ability to execute in a timely manner. If you want to start an AI Chatbot business then this is the place. - They have a great work environment, and know how important it is to be efficient."
-                    </p>
-                    <p class="font-semibold text-blue-700">- Gustav Louv</p>
-                </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
-                    <p class="text-gray-700 italic mb-4">
-                        "We are using BotPenguin for our Facebook bots, responding to Facebook messages automatically. Currently handling millions of messages on a monthly basis and really great product."
-                    </p>
-                    <p class="font-semibold text-blue-700">- Twana D.</p>
-                </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
-                    <p class="text-gray-700 italic mb-4">
-                        "Its Whatsapp Automation with API is really practical for sales & marketing objective. If it comes with analytics about campaign result it will be awesome."
-                    </p>
-                    <p class="font-semibold text-blue-700">- BD Michae</p>
-                </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
-                    <p class="text-gray-700 italic mb-4">
-                        "Their timely communication is the reason for the great project management. Our descriptions are precisely translated into needs by BotPenguin, and they possess the necessary skill set to execute features in a timely manner."
-                    </p>
-                    <p class="font-semibold text-blue-700">- Yashi Amola</p>
-                </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
-                    <p class="text-gray-700 italic mb-4">
-                        "The team at BotPenguin contributed knowledge not just about using Generative AI but also about how these technologies may be customized to meet our needs... It was amazing how well they could convert difficult technical ideas into workable, approachable solutions."
-                    </p>
-                    <p class="font-semibold text-blue-700">- Phil Johnson</p>
-                </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
-                    <p class="text-gray-700 italic mb-4">
-                        "RECTECH AI has revolutionized our customer engagement. The ease of setup and the powerful automation features have significantly boosted our lead conversion rates. Highly recommend for any business looking to scale!"
-                    </p>
-                    <p class="font-semibold text-blue-700">- Sarah Chen, Marketing Director</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-12 text-center bg-white">
-        <a href="https://rectechai.com/" target="_blank" class="btn-primary text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
-            Get Started FREE
-        </a>
-    </section>
-
-    <section id="contact" class="py-16 md:py-24 contact-section-bg">
-        <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 rounded-lg">Ready to Elevate Your Business?</h2>
-            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto rounded-lg">
-                Join the ranks of successful businesses leveraging AI for unparalleled growth and customer satisfaction. Get started with RECTECH AI today!
-            </p>
-
-            <div class="bg-white p-8 md:p-12 rounded-xl shadow-2xl max-w-sm mx-auto text-gray-800">
-                <form action="https://rectechai.com/" method="GET" target="_blank" class="space-y-6">
-                    <div>
-                        <label for="name" class="block text-left text-sm font-medium text-gray-700">Name</label>
-                        <input type="text" name="name" id="name" autocomplete="name" required
-                               class="mt-1 block w-full px-4 py-3 border form-input rounded-md shadow-sm focus:outline-none">
-                    </div>
-                    <div>
-                        <label for="email" class="block text-left text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" name="email" id="email" autocomplete="email" required
-                               class="mt-1 block w-full px-4 py-3 border form-input rounded-md shadow-sm focus:outline-none">
-                    </div>
-                    <div>
-                        <label for="phone" class="block text-left text-sm font-medium text-gray-700">Phone Number</label>
-                        <input type="tel" name="phone" id="phone" autocomplete="tel"
-                               class="mt-1 block w-full px-4 py-3 border form-input rounded-md shadow-sm focus:outline-none">
-                    </div>
-                    <div>
-                        <button type="submit" class="w-full btn-primary text-white text-lg font-semibold px-6 py-3 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
-                            Submit
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-gray-900 text-white py-8 px-6 md:px-12 text-center">
-        <div class="container mx-auto">
-            <img src="images/rectech-ai-logo.png" alt="RECTECH AI Logo" class="h-10 md:h-12 mx-auto mb-4">
-            <p class="text-lg mb-2">Automate. Engage. Empower.</p>
-            <p class="text-sm text-gray-400">&copy; 2025 RECTECH AI. All rights reserved.</p>
-            <p class="text-sm text-gray-400 mt-2">
-                Visit our main site: <a href="https://rectechai.com/" target="_blank" class="text-blue-400 hover:underline">rectechai.com</a>
-            </p>
-        </div>
-    </footer>
-
+ 
+    <header class="bg-white shadow-sm py-4 px-6 md:px-12">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://i.imgur.com/jjAAi07.png" alt="RECTECH AI Logo" class="h-10 md:h-12">
+            </div>
+            <nav class="hidden md:block">
+                <a href="#benefits" class="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-md">Benefits</a>
+                <a href="#features" class="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-md">Features</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-md">Testimonials</a>
+                <a href="https://rectechai.com/" target="_blank" class="text-gray-600 hover:text-purple-700 px-4 py-2 rounded-md">Main Site</a>
+            </nav>
+            <a href="https://rectechai.com/" target="_blank" class="hidden md:block bg-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-purple-700 transition duration-300">
+                Get Started FREE
+            </a>
+        </div>
+    </header>
+ 
+    <section class="py-16 md:py-24 text-center relative overflow-hidden gradient-bg text-white">
+        <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 rounded-lg">
+                <span class="hero-headline-line">RECTECH AI</span>
+                <span class="hero-headline-line">Automate. Engage. Empower.</span>
+                <span class="hero-headline-line">Your Business with Cutting-Edge AI Chatbots.</span>
+            </h1>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto rounded-lg font-light opacity-90">
+                Revolutionize customer interactions, generate leads, and streamline operations with intelligent AI solutions.
+            </p>
+            <a href="https://rectechai.com/" target="_blank" class="btn-primary text-white text-xl font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
+                Get Started FREE
+            </a>
+        </div>
+    </section>
+ 
+    <section class="py-16 md:py-24 problem-solution-section">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 rounded-lg">Are You Ready to Transform Your Business?</h2>
+            <p class="text-lg md:text-xl leading-relaxed max-w-4xl mx-auto rounded-lg">
+                In today's fast-paced digital world, efficient customer engagement and lead generation are crucial. Many businesses struggle with:
+            </p>
+            <ul class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
+                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm bg-opacity-20">
+                    <i class="fas fa-times-circle text-red-300 mr-3 mt-1"></i>
+                    <span>Missing out on leads due to slow response times.</span>
+                </li>
+                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm bg-opacity-20">
+                    <i class="fas fa-times-circle text-red-300 mr-3 mt-1"></i>
+                    <span>Overwhelmed customer support teams.</span>
+                </li>
+                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm bg-opacity-20">
+                    <i class="fas fa-times-circle text-red-300 mr-3 mt-1"></i>
+                    <span>Inefficient marketing and sales processes.</span>
+                </li>
+                <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm bg-opacity-20">
+                    <i class="fas fa-times-circle text-red-300 mr-3 mt-1"></i>
+                    <span>Difficulty managing customer interactions across multiple channels.</span>
+                </li>
+            </ul>
+            <p class="text-lg md:text-xl leading-relaxed mt-8 max-w-4xl mx-auto rounded-lg">
+                RECTECH AI offers the powerful, customizable AI chatbot solutions you need to overcome these challenges and thrive.
+            </p>
+        </div>
+    </section>
+ 
+    <section class="py-12 text-center bg-gray-50">
+        <a href="https://rectechai.com/" target="_blank" class="btn-primary text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
+            Get Started FREE
+        </a>
+    </section>
+ 
+    <section id="benefits" class="py-16 md:py-24 bg-gray-50 benefits-section-bg-pattern relative overflow-hidden">
+        <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 rounded-lg">Unlock Your Business Potential with RECTECH AI</h2>
+            <p class="text-lg md:text-xl mb-12 text-gray-700 rounded-lg">Experience the power of automation and intelligent engagement.</p>
+ 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                    <i class="fas fa-chart-line text-blue-800 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Generate More Leads Effortlessly</h3>
+                    <p class="text-gray-600">Capture and nurture leads 24/7 without extra effort or expenses.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                    <i class="fas fa-headset text-blue-800 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">24/7 Customer Support</h3>
+                    <p class="text-gray-600">Provide instant, automated support, ensuring your customers are always assisted.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                    <i class="fas fa-dollar-sign text-blue-800 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Boost Sales & Conversions</h3>
+                    <p class="text-gray-600">Engage a wider audience with instant communication, guiding them through the sales funnel.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                    <i class="fas fa-bullhorn text-blue-800 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Automate Marketing Campaigns</h3>
+                    <p class="text-gray-600">Transform your marketing efforts with AI-driven automation, from promotions to personalized offers.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                    <i class="fas fa-comments text-blue-800 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Seamless Multi-Platform Engagement</h3>
+                    <p class="text-gray-600">Connect with customers across WhatsApp, Facebook, Instagram, Website, and more.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                    <i class="fas fa-tachometer-alt text-blue-800 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Data-Driven Growth</h3>
+                    <p class="text-gray-600">Speedtrack your progress with top-of-the-line analytics tools for continuous optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="py-12 text-center bg-gray-50">
+        <a href="https://rectechai.com/" target="_blank" class="btn-primary text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
+            Get Started FREE
+        </a>
+    </section>
+ 
+    <section id="features" class="py-16 md:py-24 features-section">
+        <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 rounded-lg">What RECTECH AI Delivers</h2>
+            <p class="text-lg md:text-xl mb-12 rounded-lg">Comprehensive AI solutions built for your success.</p>
+ 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 rounded-xl shadow-md">
+                    <i class="fas fa-plug text-blue-300 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">80+ Integrations</h3>
+                    <p>Seamlessly connect with your existing CRMs, appointment schedulers, analytics tools, and more.</p>
+                </div>
+                <div class="p-8 rounded-xl shadow-md">
+                    <i class="fas fa-comment-dots text-blue-300 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Live Chat Capabilities</h3>
+                    <p>Transition from automated conversations to human support whenever needed, ensuring a personal touch.</p>
+                </div>
+                <div class="p-8 rounded-xl shadow-md">
+                    <i class="fas fa-inbox text-blue-300 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Unified Inbox</h3>
+                    <p>Manage all customer interactions from a single, intuitive dashboard, regardless of the platform.</p>
+                </div>
+                <div class="p-8 rounded-xl shadow-md">
+                    <i class="fas fa-chart-bar text-blue-300 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Robust Analytics</h3>
+                    <p>Gain deep insights into customer behavior and chatbot performance to continuously optimize your strategy.</p>
+                </div>
+                <div class="p-8 rounded-xl shadow-md">
+                    <i class="fas fa-mobile-alt text-blue-300 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Mobile App Access</h3>
+                    <p>Create, monitor, and manage your AI chatbots on the go with our dedicated mobile application.</p>
+                </div>
+                <div class="p-8 rounded-xl shadow-md">
+                    <i class="fas fa-robot text-blue-300 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Specialized AI Chatbots</h3>
+                    <p>Tailored solutions for Instagram, WhatsApp, Facebook, Telegram, Websites, WordPress, Shopify, WooCommerce, Squarespace, and Microsoft Teams.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="py-12 text-center bg-white">
+        <a href="https://rectechai.com/" target="_blank" class="btn-primary text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
+            Get Started FREE
+        </a>
+    </section>
+ 
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-900 rounded-lg">Powering Growth Across Industries</h2>
+            <p class="text-lg md:text-xl leading-relaxed max-w-4xl mx-auto text-gray-700 rounded-lg">
+                RECTECH AI solutions are designed to elevate businesses in diverse sectors, including:
+            </p>
+            <div class="mt-8 flex flex-wrap justify-center gap-4 text-lg font-medium text-blue-800">
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Healthcare</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Education</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">E-commerce</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Real Estate</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Consultants</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">SaaS</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Tours & Travel</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">Insurance</span>
+                <span class="bg-blue-100 px-4 py-2 rounded-full shadow-sm">...and many more!</span>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="py-12 text-center bg-gray-50">
+        <a href="https://rectechai.com/" target="_blank" class="btn-primary text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
+            Get Started FREE
+        </a>
+    </section>
+ 
+    <section id="testimonials" class="py-16 md:py-24 testimonials-section">
+        <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 rounded-lg">What Our Partners Are Saying</h2>
+            <p class="text-lg md:text-xl mb-12 rounded-lg">Hear directly from businesses transforming with our AI solutions.</p>
+ 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <p class="text-gray-700 italic mb-4">
+                        "Their ability to execute in a timely manner. If you want to start an AI Chatbot business then this is the place. - They have a great work environment, and know how important it is to be efficient."
+                    </p>
+                    <p class="font-semibold text-blue-700">- Gustav Louv</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <p class="text-gray-700 italic mb-4">
+                        "We are using AI for our Facebook bots, responding to Facebook messages automatically. Currently handling millions of messages on a monthly basis and really great product."
+                    </p>
+                    <p class="font-semibold text-blue-700">- Twana D.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <p class="text-gray-700 italic mb-4">
+                        "Its Whatsapp Automation with API is really practical for sales & marketing objective. If it comes with analytics about campaign result it will be awesome."
+                    </p>
+                    <p class="font-semibold text-blue-700">- BD Michae</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <p class="text-gray-700 italic mb-4">
+                        "Their timely communication is the reason for the great project management. Our descriptions are precisely translated into needs by our team, and they possess the necessary skill set to execute features in a timely manner."
+                    </p>
+                    <p class="font-semibold text-blue-700">- Yashi Amola</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <p class="text-gray-700 italic mb-4">
+                        "The team at Rectech AI contributed knowledge not just about using Generative AI but also about how these technologies may be customized to meet our needs... It was amazing how well they could convert difficult technical ideas into workable, approachable solutions."
+                    </p>
+                    <p class="font-semibold text-blue-700">- Phil Johnson</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <p class="text-gray-700 italic mb-4">
+                        "RECTECH AI has revolutionized our customer engagement. The ease of setup and the powerful automation features have significantly boosted our lead conversion rates. Highly recommend for any business looking to scale!"
+                    </p>
+                    <p class="font-semibold text-blue-700">- Sarah Chen, Marketing Director</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="py-12 text-center bg-white">
+        <a href="https://rectechai.com/" target="_blank" class="btn-primary text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
+            Get Started FREE
+        </a>
+    </section>
+ 
+    <section id="contact" class="py-16 md:py-24 contact-section-bg">
+        <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 rounded-lg">Ready to Elevate Your Business?</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto rounded-lg">
+                Join the ranks of successful businesses leveraging AI for unparalleled growth and customer satisfaction. Get started with RECTECH AI today!
+            </p>
+ 
+            <div class="bg-white p-8 md:p-12 rounded-xl shadow-2xl max-w-sm mx-auto text-gray-800">
+                <form action="https://rectechai.com/" method="GET" target="_blank" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-left text-sm font-medium text-gray-700">Name</label>
+                        <input type="text" name="name" id="name" autocomplete="name" required
+                               class="mt-1 block w-full px-4 py-3 border form-input rounded-md shadow-sm focus:outline-none">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-left text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" name="email" id="email" autocomplete="email" required
+                               class="mt-1 block w-full px-4 py-3 border form-input rounded-md shadow-sm focus:outline-none">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-left text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" name="phone" id="phone" autocomplete="tel"
+                               class="mt-1 block w-full px-4 py-3 border form-input rounded-md shadow-sm focus:outline-none">
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full btn-primary text-white text-lg font-semibold px-6 py-3 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+ 
+    <footer class="bg-gray-900 text-white py-8 px-6 md:px-12 text-center">
+        <div class="container mx-auto">
+            <img src="https://i.imgur.com/jjAAi07.png" alt="RECTECH AI Logo" class="h-10 md:h-12 mx-auto mb-4">
+            <p class="text-lg mb-2">Automate. Engage. Empower.</p>
+            <p class="text-sm text-gray-400">&copy; 2025 RECTECH AI. All rights reserved.</p>
+            <p class="text-sm text-gray-400 mt-2">
+                Visit our main site: <a href="https://rectechai.com/" target="_blank" class="text-blue-400 hover:underline">rectechai.com</a>
+            </p>
+        </div>
+    </footer>
+ 
 </body>
 </html>
-
